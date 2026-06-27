@@ -1,10 +1,52 @@
 # NanoJS-FixerSell01 — FIXER COIN ($FIXER) Rugpull Detection
 
-> ** ACTIVE FRAUD WARNING** This investigation was published on **2026-06-24** while the FIXER COIN presale was live and collecting investor funds. If you found this page after being recruited into the Fixer Coin Telegram or presale — **read this before sending any money.**
+> ** RESOLVED — 2026-06-26:** GitHub Trust & Safety confirmed ToS violations and took action against the fixerco account. The presale page and project site are confirmed down (404). Investigation closed successfully.
 
 ---
 
-##  Case Summary
+## Case Update — 2026-06-26
+
+### GitHub Takedown Confirmed
+
+Two days after this investigation was published, GitHub Trust & Safety responded to the abuse report and confirmed action had been taken against the fixerco account.
+
+### Evidence 07 GitHub Trust & Safety Confirmation Email
+![GitHub Takedown Email](evidence/07_github_takedown_email.jpg)
+
+### Evidence 08 github.com/fixerco Returns 404 (Account Suspended)
+![Account 404](evidence/08_fixerco_account_404.jpg)
+
+### Evidence 09 — fixerco.github.io/PresaleFIXERCOIN/ Returns 404 (Presale Down)
+![Presale 404](evidence/09_presale_page_404.jpg)
+
+### Evidence 10  fixerco.github.io/Fixer-Coin/ Returns 404 (Project Site Down)
+![Project Site 404](evidence/10_fixer_coin_site_404.jpg)
+
+**All three URLs confirmed down:**
+| URL | Status |
+|-----|--------|
+| github.com/fixerco | 404 — Account suspended |
+| fixerco.github.io/PresaleFIXERCOIN/ |  404 — Presale page down |
+| fixerco.github.io/Fixer-Coin/ |  404 — Project site down |
+
+**Timeline of action:**
+| Date | Event |
+|------|-------|
+| 2026-06-24 | Investigation published. GitHub abuse report filed. |
+| 2026-06-26 | GitHub Trust & Safety confirms ToS violations. Action taken. |
+| 2026-06-26 | All 3 fixerco URLs return 404 — account and pages confirmed removed. |
+
+> Report filed 2026-06-24. Takedown confirmed 2026-06-26. 48 hours from detection to full removal.
+
+---
+
+## ACTIVE FRAUD WARNING
+
+This investigation was published on **2026-06-24** while the FIXER COIN presale was live and collecting investor funds. If you found this page after being recruited into the Fixer Coin Telegram or presale — **read this before sending any money.**
+
+---
+
+## Case Summary
 
 | Field | Detail |
 |-------|--------|
@@ -12,8 +54,8 @@
 | **Investigator** | NanoJS10 |
 | **Detection Date** | 2026-06-24, 09:50 UTC |
 | **Chain** | Ethereum Mainnet (Base Network claimed by project) |
-| **Risk Level** | CRITICAL Active presale, confirmed rugpull mechanics |
-| **Status** | Reported to Etherscan, Base/HackerOne, GitHub Abuse |
+| **Risk Level** | CRITICAL — Active presale, confirmed rugpull mechanics |
+| **Status** |  GitHub pages taken down — 2026-06-26 |
 
 ---
 
@@ -23,11 +65,11 @@ On the morning of **2026-06-24 at 09:50 UTC**, my on-chain monitoring flagged a 
 
 The deployer wallet had **never been used before** age of 0.0 hours at the time of deployment, with only 4 transactions total. This is not how legitimate projects deploy contracts. This is how people who do not want to be found deploy contracts.
 
-Investigation confirmed the contracts belong to **FIXER COIN ($FIXER)**, a memecoin project running an active presale with 261 Telegram subscribers being recruited through a referral commission system — while the contract gives the owner complete power to prevent every investor from ever selling their tokens.
+Investigation confirmed the contracts belong to **FIXER COIN ($FIXER)**, a memecoin project running an active presale with 261 Telegram subscribers being recruited through a referral commission system while the contract gives the owner complete power to prevent every investor from ever selling their tokens.
 
 ---
 
-##  On-Chain Evidence
+## On-Chain Evidence
 
 ### Deployer Wallet
 ```
@@ -47,7 +89,7 @@ Investigation confirmed the contracts belong to **FIXER COIN ($FIXER)**, a memec
 | 25387512 | 2026-06-24 12:36:23 | **Create: FixerSellRouter** |
 | 25387577 | 2026-06-24 12:49:35 | Contract Creation #3 |
 
-**3 contracts deployed in 13 minutes 24 seconds automated scripted deployment.**
+**3 contracts deployed in 13 minutes 24 seconds — automated scripted deployment.**
 
 ### Funder Wallet
 ```
@@ -81,25 +123,23 @@ Contract   FixerSellRouter   Contract
 
 ---
 
-##  Contract Analysis
+## Contract Analysis
 
-**Source file:** `FIXER COIN.sol`  
-**Contract name:** `FixerSellRouter`  
-**Verification:** Similar Match `0x8a81E167...870319832`  
-**Compiler:** Solidity v0.8.34  
-**Dependencies:** OpenZeppelin ERC20, SafeERC20, Ownable  
+**Source file:** `FIXER COIN.sol`
+**Contract name:** `FixerSellRouter`
+**Verification:** Similar Match — `0x8a81E167...870319832`
+**Compiler:** Solidity v0.8.34
+**Dependencies:** OpenZeppelin ERC20, SafeERC20, Ownable
 
 ### Dangerous Owner Functions
 
-The project's own Telegram published a contract diagram advertising these as "security features." They are not security features. They are mechanisms that give one wallet complete control over every other participant.
-
 | Severity | Function | What It Actually Does |
 |----------|----------|-----------------------|
-|  CRITICAL | **BLACKLIST** | Owner can freeze any wallet investors cannot sell |
+| CRITICAL | **BLACKLIST** | Owner can freeze any wallet investors cannot sell |
 |  HIGH | **DYNAMIC FEES (0–50%)** | Owner drains up to half of every transaction |
 |  HIGH | **SET FEE WALLET** | Owner redirects all fees to any address, no notice |
-|  HIGH | **SET AMM PAIR** | Owner swaps out the liquidity pool |
-|  MEDIUM | **SET TIER** | Owner manually controls price tiers |
+| HIGH | **SET AMM PAIR** | Owner swaps out the liquidity pool |
+| MEDIUM | **SET TIER** | Owner manually controls price tiers |
 | MEDIUM | **EMERGENCY WITHDRAW** | Owner recovers non-FIXER tokens from contract |
 
 **The blacklist function is the primary exit mechanism.** Once retail investors hold tokens, the owner blacklists all non-owner wallets, preventing sales. The owner then dumps their allocation.
@@ -110,29 +150,28 @@ The project's own Telegram published a contract diagram advertising these as "se
 
 | Platform | Link | Status |
 |----------|------|--------|
-| Telegram | t.me/FixerCoin_Org | Active 261 subscribers |
+| Telegram | t.me/FixerCoin_Org | Active — 261 subscribers at detection |
 | Twitter/X | x.com/FixerCoin | Active |
-| Website | fixerco.github.io/Fixer-Coin/ | Active |
-| Presale | fixerco.github.io/PresaleFIXERCOIN/ | **LIVE — collecting funds** |
+| Website | fixerco.github.io/Fixer-Coin/ |  **TAKEN DOWN — 404** |
+| Presale | fixerco.github.io/PresaleFIXERCOIN/ |  **TAKEN DOWN — 404** |
+| GitHub Account | github.com/fixerco |  **SUSPENDED — 404** |
 
 ### Grooming Language Identified
 
-The Telegram channel contains documented social engineering patterns:
-
-- *"Please refrain from requesting any compensation before you begin your contributions"* — discourages asking legitimate payment questions
-- *"Commitment and loyalty will be rewarded in the future"*  vague unenforceable promise
-- *"Our team actively monitors all contributions"* — surveillance framing to discourage dissent
-- *"5% commission via your referral link"*  MLM recruitment structure to accelerate capital inflow
-- *"Will operate exclusively on DEXes"* avoids CEX listing requirements and KYC
+- *"Please refrain from requesting any compensation before you begin your contributions"*
+- *"Commitment and loyalty will be rewarded in the future"*
+- *"Our team actively monitors all contributions"*
+- *"5% commission via your referral link"*
+- *"Will operate exclusively on DEXes"*
 
 ---
 
-##  Evidence Screenshots
+## Evidence Screenshots
 
 ### Evidence 01 Contract Overview (Zero ETH, Creator confirmed)
 ![Contract Overview](evidence/01_contract_overview.jpg)
 
-### Evidence 02 — Funder Wallet ($101,123 portfolio, 348 days active)
+### Evidence 02  Funder Wallet ($101,123 portfolio, 348 days active)
 ![Funder Wallet](evidence/02_funder_wallet.jpg)
 
 ### Evidence 03  Deployer Transaction History (4 txs, scripted deployment)
@@ -141,15 +180,21 @@ The Telegram channel contains documented social engineering patterns:
 ### Evidence 04  Telegram Grooming Language (presale recruitment)
 ![Telegram Grooming](evidence/04_telegram_grooming.jpg)
 
-### Evidence 05 Telegram Owner Powers Diagram (blacklist, fees confirmed)
+### Evidence 05  Telegram Owner Powers Diagram (blacklist, fees confirmed)
 ![Telegram Owner Powers](evidence/05_telegram_owner_powers.jpg)
 
 ### Evidence 06  Contract Source: FIXER COIN.sol (identity confirmed)
 ![Contract Source](evidence/06_contract_source_fixercoin.jpg)
 
+### Evidence 07 GitHub Trust & Safety Takedown Confirmation
+![GitHub Takedown](evidence/07_github_takedown_email.jpg)
+
+### Evidence 08  fixerco.github.io Returns 404 (Confirmed Down)
+![404 Confirmed](evidence/08_fixerco_404_confirmed.jpg)
+
 ---
 
-##  Modus Operandi
+## Modus Operandi
 
 | Phase | Action |
 |-------|--------|
@@ -162,42 +207,43 @@ The Telegram channel contains documented social engineering patterns:
 
 ---
 
-##  Reports Filed
+## Reports Filed & Outcomes
 
-- [x] **Etherscan** — Deployer wallet flagged as Phishing/Scam
-- [x] **Etherscan** — Funder wallet flagged as associated with deployer
-- [x] **Base / HackerOne** — Fraud report submitted to Coinbase security
-- [x] **GitHub Abuse** fixerco.github.io/PresaleFIXERCOIN/ reported for takedown
+| Platform | Report | Outcome |
+|----------|--------|---------|
+| Etherscan | Deployer wallet flagged | Filed — pending label |
+| Etherscan | Funder wallet flagged | Filed — pending label |
+| Base / HackerOne | Fraud report submitted | Filed — under review |
+| Base Discord | Security alert posted | Filed |
+| GitHub Abuse | Presale page reported | **Confirmed action taken — 2026-06-26** |
 
 ---
 
-##  Investigation Timeline
+## Full Investigation Timeline
 
 | Time (UTC) | Event |
 |------------|-------|
 | 09:50, 2026-06-24 | On-chain monitoring detects FixerSellRouter deployment |
-| 10:07 | Manual Etherscan investigation begins — deployer confirmed 0.0h age |
-| 10:22 | Funder wallet traced — $101k portfolio, 14,896 txs, 1 downstream target |
+| 10:07 | Manual Etherscan investigation — deployer confirmed 0.0h age |
+| 10:22 | Funder wallet traced — $101k portfolio, 1 downstream target |
 | ~10:35 | Contract source confirmed as FIXER COIN.sol |
-| ~16:35 | Telegram channel located — 261 subscribers, active presale confirmed |
-| ~16:50 | Grooming language documented. Chain discrepancy (Base vs Ethereum) noted |
-| Same day | All platform reports filed. This repository published. |
+| ~16:35 | Telegram located — 261 subscribers, active presale confirmed |
+| ~16:50 | Grooming language documented. Chain discrepancy noted. |
+| Same day | All platform reports filed. Repository published. |
+| 2026-06-26 | GitHub Trust & Safety confirms ToS violation. Action taken. |
+| 2026-06-26 | fixerco.github.io returns 404 — presale page confirmed down. |
 
 ---
 
 ## If You Are in the Fixer Coin Telegram
 
-The people who built this contract designed it to look legitimate. The diagrams are professional. The team sounds committed. The referral commissions make it feel like an opportunity.
+The presale page is now down. If you have already sent funds, document everything — wallet addresses, transaction hashes, amounts — for any future law enforcement report.
 
-**It is not an opportunity. It is a mechanism designed to take your money.**
-
-The blacklist function in the contract is real. The owner can prevent you from selling at any time, for any reason, with no warning. That is not a security feature. That is a trap door.
-
-Do not send funds to the presale. Do not recruit friends. If you have already sent funds, document everything  wallet addresses, transaction hashes, amounts — for any future law enforcement report.
+Do not send further funds. Do not recruit friends.
 
 ---
 
-##  Key Addresses (for reference)
+## Key Addresses
 
 ```
 Deployer:  0x97127e96ed3af0f7194d5236984790b27ec685f2
@@ -207,7 +253,7 @@ Origin:    0xC42b1785...0A433fb7D (under investigation)
 
 ---
 
-##  About NanoJS Investigations
+## About NanoJS Investigations
 
 NanoJS Investigations is an independent blockchain forensic operation. All investigations are conducted using publicly available on-chain data and open-source tools. No financial compensation is received prior to disclosure.
 
@@ -217,4 +263,4 @@ NanoJS Investigations is an independent blockchain forensic operation. All inves
 
 ---
 
-*Published: 2026-06-24 | Case: NanoJS-FixerSell01 | Chain: Ethereum Mainnet*
+*Published: 2026-06-24 | Updated: 2026-06-26 | Case: NanoJS-FixerSell01 | Chain: Ethereum Mainnet*
